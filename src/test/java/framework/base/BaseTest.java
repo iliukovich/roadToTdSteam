@@ -31,8 +31,9 @@ public abstract class BaseTest {
             logger.info("Reporting is enabled. Creating run");
             runId = new TestrailApi().createRun();
             testInfo = getClass().getAnnotation(TestInfo.class);
+        } else {
+            logger.info("Reporting is disabled. No need to create run");
         }
-        logger.info("Reporting is disabled. No need to create run");
     }
 
     /**

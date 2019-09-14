@@ -20,11 +20,5 @@ public class SecondTest extends BaseTest {
 
         logStep(++stepCount, "Download \"SteamSetup.exe\"");
         AboutPageSteps.clickInstallSteam();
-
-        logStep(++stepCount, "Check that \"SteamSetup.exe\" is downloaded");
-        AboutPageSteps.assertSteamIsDownloaded(STEAM_SETUP_FILE);
-
-        logStep(++stepCount, "Check that size of downloaded \"SteamSetup.exe\" and expected size are equal");
-        AboutPageSteps.assertSteamSize(STEAM_SETUP_FILE);
     }
 }
