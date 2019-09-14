@@ -1,7 +1,7 @@
 package steam.menus;
 
-import a1qa.selenium.elements.ElementFactory;
-import a1qa.selenium.elements.interfaces.IButton;
+import aquality.selenium.elements.ElementFactory;
+import aquality.selenium.elements.interfaces.IButton;
 import org.openqa.selenium.By;
 
 public abstract class BaseMenu {

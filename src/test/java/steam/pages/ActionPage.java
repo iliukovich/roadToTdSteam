@@ -1,9 +1,9 @@
 package steam.pages;
 
-import a1qa.selenium.elements.ElementType;
-import a1qa.selenium.elements.interfaces.IButton;
-import a1qa.selenium.elements.interfaces.ILabel;
-import a1qa.selenium.forms.BaseForm;
+import aquality.selenium.elements.ElementType;
+import aquality.selenium.elements.interfaces.IButton;
+import aquality.selenium.elements.interfaces.ILabel;
+import aquality.selenium.forms.Form;
 import org.openqa.selenium.By;
 import steam.enums.GenreMenuItem;
 import steam.helpers.ParseInfo;
@@ -12,7 +12,7 @@ import steam.models.Game;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActionPage extends BaseForm {
+public class ActionPage extends Form {
 
     private IButton topSellersButton = getElementFactory().getButton(By.id("tab_select_TopSellers"), "topSellersButton");
     private ILabel topSellingTable = getElementFactory().getLabel(By.xpath("//div[contains(@id, 'tab_content_TopSellers') and contains(@style, 'block')]"), "topSellingTable");
@@ -32,7 +32,7 @@ public class ActionPage extends BaseForm {
     }
 
     public boolean isSellingTableDisplayed() {
-        return topSellingTable.waitForDisplayed();
+        return topSellingTable.state().waitForDisplayed();
     }
 
     private List<ILabel> getListOfGamesElementsWithDiscount() {
@@ -42,7 +42,7 @@ public class ActionPage extends BaseForm {
     public List<Game> getListOfGamesWithDiscount() {
         List<Game> gameList = new ArrayList<>();
 
-        for(ILabel gameElement : getListOfGamesElementsWithDiscount()) {
+        for (ILabel gameElement : getListOfGamesElementsWithDiscount()) {
             Game game = new Game();
             String name = gameElement.findChildElement(gameName, ElementType.LABEL).getText();
             game.setName(name);
@@ -65,7 +65,7 @@ public class ActionPage extends BaseForm {
         Game gameWithMaxDiscount = new Game();
         int maxDiscount = Integer.MIN_VALUE;
 
-        for(Game game : gameList) {
+        for (Game game : gameList) {
             if (game.getDiscount() > maxDiscount) {
                 maxDiscount = game.getDiscount();
                 gameWithMaxDiscount = game;

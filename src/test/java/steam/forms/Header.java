@@ -1,12 +1,17 @@
 package steam.forms;
 
-import a1qa.selenium.elements.interfaces.IButton;
-import a1qa.selenium.forms.BaseForm;
-import a1qa.selenium.forms.PageInfo;
+import aquality.selenium.elements.interfaces.IButton;
+import aquality.selenium.forms.Form;
 import org.openqa.selenium.By;
 
-@PageInfo(id = "global_header", pageName = "Header")
-public class Header extends BaseForm {
+public class Header extends Form {
+
+    public Header() {
+        super(
+                By.id("global_header"),
+                "Header"
+        );
+    }
 
     private IButton installSteamButton = getElementFactory().getButton(By.xpath("//a[contains(@class, 'installsteam')]"), "install steam button");
 

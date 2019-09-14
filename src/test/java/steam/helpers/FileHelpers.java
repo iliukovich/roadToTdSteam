@@ -1,7 +1,7 @@
 package steam.helpers;
 
-import a1qa.selenium.browser.BrowserManager;
-import a1qa.selenium.waitings.SmartWait;
+import aquality.selenium.browser.BrowserManager;
+import aquality.selenium.waitings.ConditionalWait;
 
 import java.io.File;
 import java.nio.file.Paths;
@@ -12,7 +12,7 @@ public class FileHelpers {
 
     public static boolean waitForFileIsDownloaded(String fileName) {
         File file = new File(Paths.get(DOWNLOAD_DIR, fileName).toString());
-        return SmartWait.waitForTrue(temp -> file.exists(), 60);
+        return ConditionalWait.waitForTrue(file::exists, "File isn't downloaded during timeout");
     }
 
     public static long getDownloadedFileSize(String fileName) {

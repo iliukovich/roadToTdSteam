@@ -10,37 +10,8 @@
 
     <properties>
         <aspectj.version>1.8.10</aspectj.version>
-        <repositoryId>nexus</repositoryId>
-        <repositoriesHost>https://qa-auto-nexus.demohoster.com/repository</repositoriesHost>
-        <snapshotRepositoryUrl>${repositoriesHost}/maven-snapshots/</snapshotRepositoryUrl>
-        <releasesRepositoryUrl>${repositoriesHost}/maven-releases/</releasesRepositoryUrl>
-        <publicRepositoryUrl>${repositoriesHost}/maven-public/</publicRepositoryUrl>
-        <snapshotsRepositoryName>Nexus Snapshots</snapshotsRepositoryName>
-        <releasesRepositoryName>Nexus Releases</releasesRepositoryName>
-        <publicRepositoryName>Nexus Repository</publicRepositoryName>
         <suite>TestSuiteForFirstTest</suite>
     </properties>
-
-    <repositories>
-        <repository>
-            <id>${repositoryId}</id>
-            <name>${publicRepositoryName}</name>
-            <url>${publicRepositoryUrl}</url>
-        </repository>
-    </repositories>
-
-    <distributionManagement>
-        <repository>
-            <id>${repositoryId}</id>
-            <name>${releasesRepositoryName}</name>
-            <url>${releasesRepositoryUrl}</url>
-        </repository>
-        <snapshotRepository>
-            <id>${repositoryId}</id>
-            <name>${snapshotsRepositoryName}</name>
-            <url>${snapshotRepositoryUrl}</url>
-        </snapshotRepository>
-    </distributionManagement>
 
     <dependencies>
         <dependency>
@@ -49,22 +20,16 @@
             <version>2.6.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.github.aquality-automation</groupId>
+            <artifactId>aquality-selenium</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+
         <dependency>  <!-- General purpose core library (used by Guice, Selenium and Allure) -->
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>24.1-jre</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.a1qa</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>LATEST</version>
-            <exclusions>
-                <exclusion>  <!-- Exclude Guava to set it's exact version explicitly in the POM -->
-                    <groupId>com.google.guava</groupId>
-                    <artifactId>guava</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>

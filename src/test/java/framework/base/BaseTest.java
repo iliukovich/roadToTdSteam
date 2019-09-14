@@ -1,9 +1,9 @@
 package framework.base;
 
-import a1qa.selenium.browser.BrowserManager;
 import api.TestrailApi;
 import aqa.logger.Logger;
-import a1qa.selenium.browser.Browser;
+import aquality.selenium.browser.Browser;
+import aquality.selenium.browser.BrowserManager;
 import framework.configurations.Configuration;
 import framework.enums.TestStatus;
 import helpers.TestInfo;
@@ -13,7 +13,6 @@ import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
 import org.testng.internal.TestResult;
 
 import java.net.MalformedURLException;
@@ -52,7 +51,7 @@ public abstract class BaseTest {
     public void before() throws WebDriverException, MalformedURLException {
         logger.logPreconditions();
         getBrowser().goTo(Configuration.getCurrentEnvironment().getStartUrl());
-        getBrowser().setSize(1920, 1080);
+        getBrowser().setWindowSize(1920, 1080);
     }
 
     /**
