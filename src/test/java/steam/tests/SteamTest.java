@@ -3,7 +3,8 @@ package steam.tests;
 import framework.base.BaseTest;
 import helpers.TestInfo;
 import org.testng.annotations.Test;
-import steam.steps.*;
+import steam.steps.ActionPageSteps;
+import steam.steps.MainPageSteps;
 
 @TestInfo(id = 1)
 public class SteamTest extends BaseTest {
@@ -12,10 +13,10 @@ public class SteamTest extends BaseTest {
     @Test
     public void runTest() {
         int stepCount = 1;
-        logger.step(stepCount, "Select Action Genre");
+        logStep(stepCount, "Select Action Genre");
         MainPageSteps.selectGenreFromMainMenu();
 
-        logger.step(++stepCount, "Check that Action page is displayed");
+        logStep(++stepCount, "Check that Action page is displayed");
         ActionPageSteps.assertActionPageIsDisplayed();
     }
 }

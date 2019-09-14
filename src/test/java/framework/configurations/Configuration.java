@@ -1,7 +1,6 @@
 package framework.configurations;
 
-
-import aqa.properties.PropertiesResourceManager;
+import helpers.PropertiesResourceManager;
 
 public class Configuration {
     private static Environment currentEnvironment;

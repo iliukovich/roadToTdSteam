@@ -1,6 +1,6 @@
 package steam.helpers;
 
-import aqa.properties.PropertiesResourceManager;
+import helpers.PropertiesResourceManager;
 
 public class Locales {
     private static final String LOC_VALUE_DEFAULT = "en";

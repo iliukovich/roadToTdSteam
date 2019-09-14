@@ -1,6 +1,6 @@
 package steam.steps;
 
-import aqa.assertion.AqaAssert;
+import org.testng.Assert;
 import steam.models.Game;
 import steam.pages.GameDetailPage;
 
@@ -12,22 +12,22 @@ public class GameDetailPageSteps {
     }
 
     public static void assertGameDetailPageIsDisplayed() {
-        AqaAssert.isTrue(new GameDetailPage().isFormDisplayed(), "Game detail page is displayed");
+        Assert.assertTrue(new GameDetailPage().isFormDisplayed(), "Game detail page is displayed");
     }
 
     public static void assertGameName(Game gameActual, Game gameExpected) {
-        AqaAssert.areEqual(gameActual.getName(), gameExpected.getName(), "Games' names are equal");
+        Assert.assertEquals(gameActual.getName(), gameExpected.getName(), "Games' names are equal");
     }
 
     public static void assertGameOriginalPrice(Game gameActual, Game gameExpected) {
-        AqaAssert.areEqual(gameActual.getOriginalPrice(), gameExpected.getOriginalPrice(), "Games' original prices are equal");
+        Assert.assertEquals(gameActual.getOriginalPrice(), gameExpected.getOriginalPrice(), "Games' original prices are equal");
     }
 
     public static void assertGameFinalPrice(Game gameActual, Game gameExpected) {
-        AqaAssert.areEqual(gameActual.getFinalPrice(), gameExpected.getFinalPrice(), "Games' final prices are equal");
+        Assert.assertEquals(gameActual.getFinalPrice(), gameExpected.getFinalPrice(), "Games' final prices are equal");
     }
 
     public static void assertDiscount(Game gameActual, Game gameExpected) {
-        AqaAssert.areEqual(gameActual.getDiscount(), gameExpected.getDiscount(), "Games' discounts are equal");
+        Assert.assertEquals(gameActual.getDiscount(), gameExpected.getDiscount(), "Games' discounts are equal");
     }
 }

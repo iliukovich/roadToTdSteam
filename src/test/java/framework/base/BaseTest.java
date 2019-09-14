@@ -1,9 +1,9 @@
 package framework.base;
 
 import api.TestrailApi;
-import aqa.logger.Logger;
 import aquality.selenium.browser.Browser;
 import aquality.selenium.browser.BrowserManager;
+import aquality.selenium.logger.Logger;
 import framework.configurations.Configuration;
 import framework.enums.TestStatus;
 import helpers.TestInfo;
@@ -49,7 +49,6 @@ public abstract class BaseTest {
 
     @BeforeMethod
     public void before() throws WebDriverException, MalformedURLException {
-        logger.logPreconditions();
         getBrowser().goTo(Configuration.getCurrentEnvironment().getStartUrl());
         getBrowser().setWindowSize(1920, 1080);
     }
@@ -66,8 +65,6 @@ public abstract class BaseTest {
             testStatus = TestStatus.FAILED;
         }
         makeScreenshot();
-        logger.logFormattedMessage(Logger.getLoc("loc.base.test.testEnd"), testContext.getName(), testStatus.toString(),
-                formatDuration(testResult.getEndMillis() - testResult.getStartMillis()));
         getBrowser().quit();
     }
 
@@ -82,7 +79,7 @@ public abstract class BaseTest {
         long hours = TimeUnit.MILLISECONDS.toHours(milliseconds);
         long minutes = TimeUnit.MILLISECONDS.toMinutes(milliseconds - TimeUnit.HOURS.toMillis(hours));
         long seconds = TimeUnit.MILLISECONDS.toSeconds(milliseconds - TimeUnit.HOURS.toMillis(hours) - TimeUnit.MINUTES.toMillis(minutes));
-        return logger.getFormattedMessage(Logger.getLoc("loc.base.test.duration"), hours, minutes, seconds);
+        return "";
     }
 
     @Attachment(value = "Page screenshot", type = "image/png")
@@ -90,8 +87,15 @@ public abstract class BaseTest {
         return getBrowser().getScreenshot();
     }
 
-    private Browser getBrowser(){
+    private Browser getBrowser() {
         return BrowserManager.getBrowser();
+    }
+
+    protected void logStep(int stepNum, String stepName) {
+        logger.info(String.format(
+                "Step #%s: %s",
+                stepNum, stepName
+        ));
     }
 }
 

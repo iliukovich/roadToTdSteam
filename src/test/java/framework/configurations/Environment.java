@@ -1,6 +1,6 @@
 package framework.configurations;
 
-import aqa.properties.PropertiesResourceManager;
+import helpers.PropertiesResourceManager;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;

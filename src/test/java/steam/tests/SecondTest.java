@@ -15,16 +15,16 @@ public class SecondTest extends BaseTest {
     @Test
     public void runTest() {
         int stepCount = 1;
-        logger.step(++stepCount, "Click \"Install\" button in Header");
+        logStep(++stepCount, "Click \"Install\" button in Header");
         HeaderSteps.clickInstallSteamButton();
 
-        logger.step(++stepCount, "Download \"SteamSetup.exe\"");
+        logStep(++stepCount, "Download \"SteamSetup.exe\"");
         AboutPageSteps.clickInstallSteam();
 
-        logger.step(++stepCount, "Check that \"SteamSetup.exe\" is downloaded");
+        logStep(++stepCount, "Check that \"SteamSetup.exe\" is downloaded");
         AboutPageSteps.assertSteamIsDownloaded(STEAM_SETUP_FILE);
 
-        logger.step(++stepCount, "Check that size of downloaded \"SteamSetup.exe\" and expected size are equal");
+        logStep(++stepCount, "Check that size of downloaded \"SteamSetup.exe\" and expected size are equal");
         AboutPageSteps.assertSteamSize(STEAM_SETUP_FILE);
     }
 }
